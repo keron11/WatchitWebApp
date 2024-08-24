@@ -1,0 +1,41 @@
+﻿@using WatchitWebApp.Entities;
+@{
+    ViewData["Title"] = "Головна";
+}
+
+<div class="container-xxl">
+    <div class="d-flex flex-row">
+        @foreach (Video video in Model)
+        {
+            <a href="/Content/Watch?v=@video.NanoId" class="card m-2" style="width: 18rem;">
+                <div style="width: 18rem; height: 100%;">
+                    <img class="card-img-top" src="@video.PreviewSrc" alt="Card image cap">
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">@video.Title</h5>
+                    <span onclick="window.location.href='/Channel/Main?u=@video.User.Login'">@video.User.Login</span>
+                    <h6>@video.DatePublished</h6>
+                </div>
+            </a>
+        }
+    </div>
+ </div>
+ <div class="container-xxl">
+    <div class="d-flex flex-row">
+        <div class="card m-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Відео</h5>
+                <a class="btn-sm btn-warning" href="/Content/CreatingVideo">Створити Відео</a>
+                <a class="btn-sm btn-success" href="/Content/AllVideos">Мої відео</a>
+            </div>
+        </div>
+
+        <div class="card m-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Профіль</h5>
+                <a class="btn-sm btn-warning" href="/Account/Profile">Мій профіль</a>
+            </div>
+        </div>
+    </div>
+</div>

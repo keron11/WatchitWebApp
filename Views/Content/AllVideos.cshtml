@@ -1,0 +1,34 @@
+﻿@using WatchitWebApp.Entities;
+@{
+    ViewData["Title"] = "Мої відео";
+}
+
+<div class="container-xxl">
+    <div class="d-flex flex-row">
+    @foreach (Video video in Model)
+    {
+        <div class="card m-2" style="width: 18rem;">
+            <img class="card-img-top" src="@video.PreviewSrc" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@video.Title</h5>
+                
+                <p class="card-text">@video.Discription</p>
+                <form method="post" enctype="multipart/form-data" asp-controller="Content" asp-action="GetOneVideoByNano">
+                    <input name="nId" value="@video.NanoId" hidden />
+                    <input class="btn-sm btn-danger m-1" type="submit" value="Переглянути" />
+                </form>
+                <form method="post" enctype="multipart/form-data" asp-controller="Content" asp-action="DeleteVideo">
+                    <input name="nanoId" value="@video.NanoId" hidden />
+                    <input class="btn-sm btn-danger m-1" type="submit" value="Видалити" />
+                </form>
+                <form method="post" enctype="multipart/form-data" asp-controller="Content" asp-action="VideoSettings">
+                    <input name="nanoId" value="@video.NanoId" hidden />
+                    <input class="btn-sm btn-primary m-1" type="submit" value="Редагувати" />
+                </form>
+  
+            </div>
+        </div>
+    }
+    </div>
+    <a class="btn btn-secondary" href="/Home/Main">Назад</a>
+</div>

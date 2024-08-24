@@ -1,5 +1,3 @@
-using System;
-
 namespace WatchitWebApp.Models
 {
     public class ErrorViewModel

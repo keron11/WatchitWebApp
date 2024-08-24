@@ -1,0 +1,29 @@
+﻿@model WatchitWebApp.Entities.UserInfo;
+@{
+    ViewData["Title"] = "Профіль";
+}
+
+<div class="card m-2" style="width: 18rem;">
+    <img class="card-img-top" src="@Model.Avatar" alt="Card image cap" style=" height:180px;">
+    <div class="card-body">
+        <h4 class="card-title">@Model.User.Name</h4><br>
+        <span class="card-text">@Model.Info</span><br>
+        @if (Model.User.IsVerified == true)
+        {
+            <span style="color: green;">Ваш акаунт підтверджено!</span>
+
+            <br>
+        }
+        else
+        {
+            <span style="color: red;">Ваш акаунт не підтверджено</span>
+            <br>
+            <a class="btn-sm btn-secondary" href="/account/login">Підтвердити</a>
+
+            <br>
+        }
+        <span>Еmail: @Model.User.Email</span><br>
+        <span>Логін: @Model.User.Login</span><br>
+        <span>Нікнейм: @Model.User.Username</span><br>
+    </div>
+</div>

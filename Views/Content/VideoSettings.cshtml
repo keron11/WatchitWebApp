@@ -1,0 +1,42 @@
+﻿@using WebSite.Entities;
+@model WatchitWebApp.Entities.Video;
+@{
+    ViewData["Title"] = "Редагування відео";
+}
+
+<div class="container-xxl">
+    <div class="d-flex flex-row">
+        <div class="card m-2" style="width: 18rem;">
+            <img class="card-img-top" src="@Model.PreviewSrc" alt="Card image cap">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" asp-controller="Content" asp-action="EditVideo">
+                    <input asp-for="PreviewSrc" class="col mb-3" value="@Model.PreviewSrc" />
+                    <input asp-for="Title" class="col mb-3" value="@Model.Title" />
+                    <textarea asp-for="Discription" class="col mb-3">@Model.Discription</textarea>
+                    <select asp-for="Status" class="col mb-3" name="status">
+                        @if (@Model.Status == Status.CREATED)
+                        {
+                            <option selected value="0">Для себе</option>
+                            <option value="1">Публічний</option>
+                            <option value="2">По посиланню</option>
+                        }
+                        @if(@Model.Status == Status.PUBLISHED) {
+                            <option value="0">Для себе</option>
+                            <option selected value="1">Публічний</option>
+                            <option value="2">По посиланню</option>
+                        }
+                        @if (@Model.Status == Status.PRIVATE)
+                        {
+                            <option value="0">Для себе</option>
+                            <option value="1">Публічний</option>
+                            <option selected value="2">По посиланню</option>
+                        }
+                    </select>
+                    <input name="filePath" value="@Model.NanoId" hidden />
+                    <input class="btn-sm btn-danger m-1" type="submit" value="Редагувати" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-secondary" href="/Home/Main">Назад</a>
+</div>

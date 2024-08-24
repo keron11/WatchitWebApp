@@ -1,0 +1,38 @@
+﻿@model WatchitWebApp.Entities.Video
+@{
+    ViewData["Title"] = "Створення відео";
+}
+
+<div class="col-4">
+    <form method="post" enctype="multipart/form-data" asp-controller="Content" asp-action="UploadVideo">
+        <div class="col mb-3">
+            <input type="text" asp-for="Title" class="form-control" placeholder="Назва відео">
+        </div>
+        <div class="col mb-3">
+            <label>Опис до відео</label>
+            <textarea class="form-control" asp-for="Discription" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="col mb-3">
+            <label>Відео</label>
+            <input type="file" accept="video/mp4" name="file" class="btn btn-primary" required />
+        </div>
+        <div class="col mb-3">
+            <label>Обкладинка для відео(Необов'язково)</label>
+            <input type="file" accept=".jpg, .jpeg, .png" name="filePic" class="btn btn-primary" />
+        </div>
+        <div class="col mb-3">
+            <select asp-for="Status" class="col mb-3" name="status">
+                <option selected value="CREATED">Для себе</option>
+                <option value="PUBLISHED">Публічний</option>
+                <option value="PRIVATE">По посиланню</option>
+            </select>
+        </div>
+        <div class="col mb-3">
+            <input type="submit" value="Завантажити" class="btn btn-primary"/>
+        </div>
+        <span class="text-@ViewBag.TextColor">
+            @ViewBag.Message
+        </span>
+    </form>
+    <a class="btn btn-secondary" href="/Home/Main">Назад</a>
+</div>

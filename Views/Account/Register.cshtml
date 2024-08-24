@@ -1,0 +1,99 @@
+﻿@model WatchitWebApp.Entities.User
+<div class="container-xxl">
+      <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+          <!-- Register Card -->
+          <div class="card">
+            <div class="card-body">
+              <form asp-controller="Account" asp-action="RegisterNewUser" method="post" id="formAuthentication" class="mb-3">
+                  <div asp-validation-summary="All" class="alert-danger"></div>
+                  <div class="mb-3">
+                  <label for="lastname" class="form-label">Name</label>
+                  <input
+                    asp-for="Login"
+                    name="Name"
+                    type="text"
+                    class="form-control"
+                    id="firstname"
+                    placeholder="Name"
+                    autofocus
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="lastname" class="form-label">Login</label>
+                  <input
+                    asp-for="Login"
+                    name="Login"
+                    type="text"
+                    class="form-control"
+                    id="login"
+                    placeholder="Login"
+                    autofocus
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input
+                    asp-for="Login"
+                    name="UserName"
+                    type="text"
+                    class="form-control"
+                    id="userName"
+                    placeholder="UserName"
+                    autofocus
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                    <input type="email" asp-for="Email" class="form-control" name="Email" aria-describedby="emailHelp" id="email" placeholder="Enter your email" required />
+                </div>
+                <div class="mb-3 form-password-toggle">
+                  <label class="form-label" for="password">Password</label>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="password"
+                      asp-for="Password"
+                      class="form-control"
+                      name="Password"
+                      id="password"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                      required
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+
+                <div class="mb-3 form-password-toggle">
+                  <label class="form-label" for="password">Confirm Password</label>
+                  <div class="input-group input-group-merge">
+                    <input
+                      name="CPassword"
+                      type="password"
+                      asp-for="Password"
+                      class="form-control"
+                      id="password"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                      required
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
+                </div>
+                <button class="btn btn-primary d-grid w-100">Sign up</button>
+              </form>
+
+              <p class="text-center">
+                <span>Already have an account?</span>
+                <a href="/Account/Login">
+                  <span>Sign in instead</span>
+                </a>
+              </p>
+            </div>
+          </div>
+          <!-- Register Card -->
+        </div>
+      </div>
+    </div>
